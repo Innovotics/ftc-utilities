@@ -13,6 +13,7 @@ import java.io.StringWriter;
  * OpMode Abstract class that offers specialized telemetry and error handling to ensure that a LinearOpMode
  * runs smoothly in its "active" hardware state
  *
+ *
  */
 public abstract class ActiveOpMode extends LinearOpMode {
 
