@@ -1,0 +1,7 @@
+//
+// build.gradle in FTC Utilities
+//
+
+// Include common definitions from above.
+apply from: '../build.common.gradle'
+
