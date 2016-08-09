@@ -3,6 +3,7 @@ package org.ftcbootstrap.demos.navbot;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorMRColorCalibration;
 import org.ftcbootstrap.demos.TelemetryTest;
 import org.ftcbootstrap.demos.navbot.opmodes.EncoderTestFromGamepadButtons;
 import org.ftcbootstrap.demos.navbot.opmodes.EncoderTestFromGamepadSticks;
@@ -11,7 +12,7 @@ import org.ftcbootstrap.demos.navbot.opmodes.NavigateWithEncoders;
 import org.ftcbootstrap.demos.navbot.opmodes.EncoderMotorTest;
 import org.ftcbootstrap.demos.navbot.opmodes.EncodersWithEventOpmode;
 import org.ftcbootstrap.demos.navbot.opmodes.NavBotManual;
-
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorMRColor;
 /**
  * Register Op Modes
  */
@@ -40,7 +41,10 @@ public class NavBotRegistry implements OpModeRegister {
         manager.register("NavigateWithEncoders",NavigateWithEncoders.class);
         manager.register("NavBotManual", NavBotManual.class);
         manager.register("NavBotTelemetry", NavBotTelemetry.class);
+        manager.register("SensorMRColor", SensorMRColor.class);
+        manager.register("SensorMRColorCalibration", SensorMRColorCalibration.class);
        // manager.register("MRGyroTest",MRGyroTest.class);
+
 
         manager.register("TelemetryTest", TelemetryTest.class);
 

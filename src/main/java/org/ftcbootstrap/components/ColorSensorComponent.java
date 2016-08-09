@@ -5,13 +5,13 @@ import android.graphics.Color;
 
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.LED;
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cColorSensor;
 
 import org.ftcbootstrap.ActiveOpMode;
 
 
 /**
- *  Helper class taken from qualcomm example
- *  see {@link com.qualcomm.ftcrobotcontroller.opmodes.ColorSensorDriver}
+ *  Helper class
  */
 
 public class ColorSensorComponent extends OpModeComponent {
@@ -111,7 +111,11 @@ public class ColorSensorComponent extends OpModeComponent {
         getOpMode().getTelemetryUtil().addData(name + ": Red  ", getR());
         getOpMode().getTelemetryUtil().addData(name + ": Green", getG());
         getOpMode().getTelemetryUtil().addData(name + ": Blue ", getB());
+        getOpMode().getTelemetryUtil().addData(name + ": mrColorNumber ", mrColorNumber());
         getOpMode().getTelemetryUtil().addData(name + ": Hue", getHSCValues()[0]);
+
+
+
 
     }
 
@@ -187,4 +191,28 @@ public class ColorSensorComponent extends OpModeComponent {
                 break;
         }
     }
+
+
+    public int mrColorNumber() {
+        ModernRoboticsI2cColorSensor  mrSensor = (ModernRoboticsI2cColorSensor) colorSensor;
+        return ((ModernRoboticsI2cColorSensor) colorSensor).colorNumber();
+    }
+
+    public void mrCalibrateBlackLevel() {
+        ModernRoboticsI2cColorSensor  mrSensor = (ModernRoboticsI2cColorSensor) colorSensor;
+        ((ModernRoboticsI2cColorSensor) colorSensor).calibrateBlackLevel();
+    }
+    public void mrCalibrateWhiteBalance() {
+        ModernRoboticsI2cColorSensor  mrSensor = (ModernRoboticsI2cColorSensor) colorSensor;
+        ((ModernRoboticsI2cColorSensor) colorSensor).calibrateWhiteBalance();
+    }
+    public void mrSetCommandOperatingFrequencyMode35() {
+        ModernRoboticsI2cColorSensor  mrSensor = (ModernRoboticsI2cColorSensor) colorSensor;
+       ((ModernRoboticsI2cColorSensor) colorSensor).setCommandOperatingFrequencyMode35();
+    }
+    public void mrSetCommandOperatingFrequencyMode36() {
+        ModernRoboticsI2cColorSensor  mrSensor = (ModernRoboticsI2cColorSensor) colorSensor;
+        ((ModernRoboticsI2cColorSensor) colorSensor).setCommandOperatingFrequencyMode36();
+    }
+
 }

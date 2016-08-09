@@ -131,6 +131,7 @@ public class TelemetryUtil  {
 
             opMode.sendTelemetryData( model.getKey(), model.getMessage());
         }
+        opMode.telemetry.update();
 
     }
 

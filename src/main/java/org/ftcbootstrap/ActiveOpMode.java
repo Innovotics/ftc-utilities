@@ -81,12 +81,12 @@ public abstract class ActiveOpMode extends LinearOpMode {
                 ErrorUtil.handleCatchAllException(e, getTelemetryUtil());;
             }
 
-            waitOneFullHardwareCycle();
+            idle();
         }
 
         //wait for user to hit stop
         while (opModeIsActive()) {
-            waitOneFullHardwareCycle();
+            idle();
         }
 
 
@@ -103,10 +103,10 @@ public abstract class ActiveOpMode extends LinearOpMode {
      * Clear data from the telemetry cache
      */
     public void clearTelemetryData() {
-        telemetry.clearData();
+        telemetry.clearAll();
         try {
             if (opModeIsActive()) {
-                waitForNextHardwareCycle();
+                idle();
             }
         } catch (InterruptedException e) {
         }
