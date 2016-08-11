@@ -206,13 +206,13 @@ public class ColorSensorComponent extends OpModeComponent {
         ModernRoboticsI2cColorSensor  mrSensor = (ModernRoboticsI2cColorSensor) colorSensor;
         ((ModernRoboticsI2cColorSensor) colorSensor).calibrateWhiteBalance();
     }
-    public void mrSetCommandOperatingFrequencyMode35() {
+    public void mrSetCommandOperatingFrequencyMode50Hz() {
         ModernRoboticsI2cColorSensor  mrSensor = (ModernRoboticsI2cColorSensor) colorSensor;
-       ((ModernRoboticsI2cColorSensor) colorSensor).setCommandOperatingFrequencyMode35();
+       ((ModernRoboticsI2cColorSensor) colorSensor).setCommandOperatingFrequencyMode50Hz();
     }
-    public void mrSetCommandOperatingFrequencyMode36() {
+    public void mrSetCommandOperatingFrequencyMode60Hz() {
         ModernRoboticsI2cColorSensor  mrSensor = (ModernRoboticsI2cColorSensor) colorSensor;
-        ((ModernRoboticsI2cColorSensor) colorSensor).setCommandOperatingFrequencyMode36();
+        ((ModernRoboticsI2cColorSensor) colorSensor).setCommandOperatingFrequencyMode60Hz();
     }
 
 }
