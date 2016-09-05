@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+apply from: '../build.common.gradle'
+=======
 //
 // build.gradle in FTC Utilities
 //
@@ -29,3 +32,4 @@ dependencies {
 
     compile project(':FtcRobotController')
 }
+>>>>>>> 6f25ac7cee69c5617fb7a7fcfcfa13b15d6efd8c
