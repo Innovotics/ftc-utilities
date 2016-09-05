@@ -33,9 +33,8 @@ public class OneMCRegistry implements OpModeRegister {
      * If two or more op modes are registered with the same name, the app will display an error.
      */
 
-        manager.register("OneMCBot", OneMCBot.class);
 
-
+        //manager.register("OneMCBot", OneMCBot.class);
         manager.register("TelemetryTest", TelemetryTest.class);
 
     }

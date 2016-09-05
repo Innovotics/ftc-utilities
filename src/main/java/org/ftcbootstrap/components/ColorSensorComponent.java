@@ -111,7 +111,7 @@ public class ColorSensorComponent extends OpModeComponent {
         getOpMode().getTelemetryUtil().addData(name + ": Red  ", getR());
         getOpMode().getTelemetryUtil().addData(name + ": Green", getG());
         getOpMode().getTelemetryUtil().addData(name + ": Blue ", getB());
-        getOpMode().getTelemetryUtil().addData(name + ": mrColorNumber ", mrColorNumber());
+        //getOpMode().getTelemetryUtil().addData(name + ": mrColorNumber ", mrColorNumber());
         getOpMode().getTelemetryUtil().addData(name + ": Hue", getHSCValues()[0]);
 
 
@@ -192,7 +192,7 @@ public class ColorSensorComponent extends OpModeComponent {
         }
     }
 
-
+/*
     public int mrColorNumber() {
         ModernRoboticsI2cColorSensor  mrSensor = (ModernRoboticsI2cColorSensor) colorSensor;
         return ((ModernRoboticsI2cColorSensor) colorSensor).colorNumber();
@@ -215,4 +215,5 @@ public class ColorSensorComponent extends OpModeComponent {
         ((ModernRoboticsI2cColorSensor) colorSensor).setCommandOperatingFrequencyMode60Hz();
     }
 
+*/
 }
