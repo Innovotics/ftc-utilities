@@ -1,9 +1,13 @@
 package org.ftcbootstrap.demos;
 
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 import org.ftcbootstrap.ActiveOpMode;
 import org.ftcbootstrap.components.utils.ErrorUtil;
 
+
+@Autonomous
 public class TelemetryTest extends ActiveOpMode {
 
   private int cnt;
