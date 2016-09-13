@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.navbot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.ActiveOpMode;
@@ -25,6 +26,8 @@ import org.ftcbootstrap.demos.navbot.NavBot;
  * <p/>
  * Also see: {@link NavBot} for the saved configuration
  */
+
+@Autonomous
 public class NavigateWithEncoders extends ActiveOpMode {
 
     private NavBot robot;
@@ -42,7 +45,7 @@ public class NavigateWithEncoders extends ActiveOpMode {
         //specify configuration name save from scan operation
         robot = NavBot.newConfig(hardwareMap, getTelemetryUtil());
 
-        tankDriveToEncoder = new TankDriveToEncoder(this, robot.getLeftDrive(), robot.getRightDrive());
+        tankDriveToEncoder = new TankDriveToEncoder(this, robot.leftDrive, robot.rightDrive);
         tankDriveToEncoder.setOpModeLogLevel(0);
 
         getTelemetryUtil().addData("Init", getClass().getSimpleName() + " initialized.");
@@ -70,8 +73,8 @@ public class NavigateWithEncoders extends ActiveOpMode {
 
       //  getTelemetryUtil().addData("Current Step: ", step);
 
-        int lp = robot.getLeftDrive().getCurrentPosition();
-        int rp = robot.getRightDrive().getCurrentPosition();
+        int lp = robot.leftDrive.getCurrentPosition();
+        int rp = robot.rightDrive.getCurrentPosition();
         getTelemetryUtil().addData("left motor position in step:" + step, lp);
         getTelemetryUtil().addData("right motor position in step:" + step, rp);
         getTelemetryUtil().addData("dif in step:" + step,  lp - rp);

@@ -24,20 +24,20 @@ import org.ftcbootstrap.components.utils.TelemetryUtil;
 public class NavBot extends RobotConfiguration {
 
     //motors
-    private DcMotor leftDrive;
-    private DcMotor rightDrive;
+    public DcMotor leftDrive;
+    public DcMotor rightDrive;
 
-    private DcMotor arm;
-    private Servo leftClaw;
-    private Servo rightClaw;
+    public DcMotor arm;
+    public Servo leftClaw;
+    public Servo rightClaw;
 
-    private OpticalDistanceSensor odsBumper;
-    private OpticalDistanceSensor odsGround;
+    public OpticalDistanceSensor odsBumper;
+    public OpticalDistanceSensor odsGround;
 
-    private GyroSensor gyro;
+    public GyroSensor gyro;
 
-    private TouchSensor touchSensorForArm;
-    private ColorSensor mrColor;
+    public TouchSensor touchSensorForArm;
+    public ColorSensor mrColor;
 
 
     /**
@@ -86,66 +86,10 @@ public class NavBot extends RobotConfiguration {
         touchSensorForArm = (TouchSensor) getHardwareOn("sm1_d7_touch", hardwareMap.touchSensor);
 
         mrColor = (ColorSensor) getHardwareOn("sm1_i5_mr_color", hardwareMap.colorSensor);
-        gyro = (GyroSensor )  getHardwareOn("sm1_i4_mr_gyro", hardwareMap.gyroSensor);
+        gyro = (GyroSensor) getHardwareOn("sm1_i4_mr_gyro", hardwareMap.gyroSensor);
 
 
     }
 
-    /**
-     * @return DcMotor
-     */
-    public DcMotor getLeftDrive() {
-        return leftDrive;
-    }
-
-    /**
-     * @return DcMotor
-     */
-    public DcMotor getRightDrive() {
-        return rightDrive;
-    }
-
-
-    /**
-     * @return Servo
-     */
-    public Servo getLeftClaw() {
-        return leftClaw;
-    }
-
-    /**
-     * @return Servo
-     */
-
-    public Servo getRightClaw() {
-        return rightClaw;
-    }
-
-
-    public DcMotor getArm() {
-        return arm;
-    }
-
-    public OpticalDistanceSensor getOdsBumper() {
-        return odsBumper;
-    }
-
-    public OpticalDistanceSensor getOdsGround() {
-        return odsGround;
-    }
-
-    public GyroSensor getGyro() {
-        return gyro;
-    }
-
-    /**
-     * @return TouchSensor
-     */
-    public TouchSensor getTouchSensorForArm() {
-        return touchSensorForArm;
-    }
-
-    public ColorSensor getMrColor() {
-        return mrColor;
-    }
 }
+

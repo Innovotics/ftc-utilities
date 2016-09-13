@@ -1,10 +1,12 @@
 package org.ftcbootstrap.demos.navbot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 
+@Autonomous
 public class EncodersWithEventOpmode extends OpMode {
 
     private DcMotor leftDrive;

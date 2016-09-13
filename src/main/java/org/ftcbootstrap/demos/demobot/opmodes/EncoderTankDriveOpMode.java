@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.demobot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.demos.demobot.DemoBot;
@@ -17,6 +18,8 @@ import org.ftcbootstrap.components.utils.DriveDirection;
  * <p/>
  * Opmode demonstrates how to runToTarget a vehicle using motor encoders
  */
+
+@Autonomous
 public class EncoderTankDriveOpMode extends ActiveOpMode {
 
     private DemoBot robot;
@@ -34,7 +37,7 @@ public class EncoderTankDriveOpMode extends ActiveOpMode {
         //specify configuration name save from scan operation
         robot = DemoBot.newConfig(hardwareMap, getTelemetryUtil());
 
-        tankDriveToEncoder = new TankDriveToEncoder(this, robot.getMotor1(), robot.getMotor2());
+        tankDriveToEncoder = new TankDriveToEncoder(this, robot.motor1, robot.motor2);
 
         getTelemetryUtil().addData("Init", getClass().getSimpleName() + " initialized.");
         getTelemetryUtil().sendTelemetry();
@@ -113,13 +116,13 @@ public class EncoderTankDriveOpMode extends ActiveOpMode {
 
 
     private void checkForKillSwitch() throws InterruptedException {
-        if (robot.getTouch1().isPressed()) {
+        if (robot.touch1.isPressed()) {
 
             if (tankDriveToEncoder.isDriving()) {
                 tankDriveToEncoder.stop();
             } else {
-                robot.getMotor1().setPower(0);
-                robot.getMotor2().setPower(0);
+                robot.motor1.setPower(0);
+                robot.motor2.setPower(0);
             }
             step = 99;
 

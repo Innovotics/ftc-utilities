@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.navbot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.ActiveOpMode;
@@ -25,6 +26,9 @@ import org.ftcbootstrap.demos.navbot.NavBot;
  * <p/>
  * Also see: {@link NavBot} for the saved configuration
  */
+
+
+@TeleOp
 public class EncoderTestFromGamepadButtons extends ActiveOpMode {
 
     private NavBot robot;
@@ -55,9 +59,9 @@ public class EncoderTestFromGamepadButtons extends ActiveOpMode {
         robot = NavBot.newConfig(hardwareMap, getTelemetryUtil());
 
         //these are only used to set the encoder
-        leftMotorToEncoder = new MotorToEncoder(this, robot.getLeftDrive());
+        leftMotorToEncoder = new MotorToEncoder(this, robot.leftDrive);
         leftMotorToEncoder.setName("left runToTarget" );
-        rightMotorToEncoder = new MotorToEncoder( this, robot.getRightDrive());
+        rightMotorToEncoder = new MotorToEncoder( this, robot.rightDrive);
         rightMotorToEncoder.setName("right runToTarget" );
         currentControl =  GamePadMotor.Control.Y_BUTTON;
 
@@ -72,20 +76,20 @@ public class EncoderTestFromGamepadButtons extends ActiveOpMode {
 
         float power = 0.65f;
         //2 GamePadMotors instances to drive the robot forward
-        yGamePadMotorLeft = new GamePadMotor(this,gamepad1, robot.getLeftDrive() , GamePadMotor.Control.Y_BUTTON ,power);
-        yGamePadMotorRight = new GamePadMotor(this,gamepad1, robot.getRightDrive() , GamePadMotor.Control.Y_BUTTON ,power);
+        yGamePadMotorLeft = new GamePadMotor(this,gamepad1, robot.leftDrive , GamePadMotor.Control.Y_BUTTON ,power);
+        yGamePadMotorRight = new GamePadMotor(this,gamepad1, robot.rightDrive , GamePadMotor.Control.Y_BUTTON ,power);
 
         //2 GamePadMotors instances to drive the robot backward
-        aGamePadMotorLeft = new GamePadMotor(this,gamepad1, robot.getLeftDrive() , GamePadMotor.Control.A_BUTTON , -power);
-        aGamePadMotorRight = new GamePadMotor(this,gamepad1, robot.getRightDrive() , GamePadMotor.Control.A_BUTTON ,- power);
+        aGamePadMotorLeft = new GamePadMotor(this,gamepad1, robot.leftDrive , GamePadMotor.Control.A_BUTTON , -power);
+        aGamePadMotorRight = new GamePadMotor(this,gamepad1, robot.rightDrive , GamePadMotor.Control.A_BUTTON ,- power);
 
         //2 GamePadMotors instances to spin the robot Left
-        xGamePadMotorLeft = new GamePadMotor(this,gamepad1, robot.getLeftDrive() , GamePadMotor.Control.X_BUTTON , 0);
-        xGamePadMotorRight = new GamePadMotor(this,gamepad1, robot.getRightDrive() , GamePadMotor.Control.X_BUTTON, power);
+        xGamePadMotorLeft = new GamePadMotor(this,gamepad1, robot.leftDrive , GamePadMotor.Control.X_BUTTON , 0);
+        xGamePadMotorRight = new GamePadMotor(this,gamepad1, robot.rightDrive , GamePadMotor.Control.X_BUTTON, power);
 
         //2 GamePadMotors instances to spin the robot right
-        bGamePadMotorLeft = new GamePadMotor(this,gamepad1, robot.getLeftDrive() , GamePadMotor.Control.B_BUTTON , power);
-        bGamePadMotorRight = new GamePadMotor(this,gamepad1, robot.getRightDrive() , GamePadMotor.Control.B_BUTTON ,0);
+        bGamePadMotorLeft = new GamePadMotor(this,gamepad1, robot.leftDrive , GamePadMotor.Control.B_BUTTON , power);
+        bGamePadMotorRight = new GamePadMotor(this,gamepad1, robot.rightDrive , GamePadMotor.Control.B_BUTTON ,0);
 
         step = 1;
 
@@ -135,8 +139,8 @@ public class EncoderTestFromGamepadButtons extends ActiveOpMode {
                 break;
         }
 
-        getTelemetryUtil().addData("Left Position", robot.getLeftDrive().getCurrentPosition());
-        getTelemetryUtil().addData("RightPosition", robot.getRightDrive().getCurrentPosition());
+        getTelemetryUtil().addData("Left Position", robot.leftDrive.getCurrentPosition());
+        getTelemetryUtil().addData("RightPosition", robot.rightDrive.getCurrentPosition());
 
 
         //send any telemetry that may have been added in the above operations

@@ -24,9 +24,8 @@ import org.ftcbootstrap.components.utils.TelemetryUtil;
 public class OneMCBot extends RobotConfiguration {
 
     //motors
-    private DcMotor leftDrive;
-    private DcMotor rightDrive;
-
+    public DcMotor leftDrive;
+    public DcMotor rightDrive;
 
 
     /**
@@ -66,22 +65,6 @@ public class OneMCBot extends RobotConfiguration {
 
 
     }
-
-    /**
-     * @return DcMotor
-     */
-    public DcMotor getLeftDrive() {
-        return leftDrive;
-    }
-
-    /**
-     * @return DcMotor
-     */
-    public DcMotor getRightDrive() {
-        return rightDrive;
-    }
-
-
 
 
 

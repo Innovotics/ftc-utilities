@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.pushbot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.ActiveOpMode;
@@ -28,6 +29,8 @@ import org.ftcbootstrap.demos.pushbot.PushBot;
  * <p/>
  * Also see: {@link PushBot} for the saved configuration
  */
+
+@TeleOp
 public class PushBotManual2 extends ActiveOpMode {
 
   private GamePadTankDrive tankDrive;
@@ -54,14 +57,14 @@ public class PushBotManual2 extends ActiveOpMode {
     super.onStart();
 
     //set up tank drive operation to use the gamepad joysticks
-    tankDrive =  new GamePadTankDrive( this,gamepad1, robot.getLeftDrive(), robot.getRightDrive());
+    tankDrive =  new GamePadTankDrive( this,gamepad1, robot.leftDrive, robot.rightDrive);
     tankDrive.startRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
     //set up arm motor operation using the gamepad's left joystick
-    armMotorStick = new GamePadMotor(this, gamepad2, robot.getLeftArm(),  GamePadMotor.Control.LEFT_STICK_Y  );
+    armMotorStick = new GamePadMotor(this, gamepad2, robot.leftArm,  GamePadMotor.Control.LEFT_STICK_Y  );
 
     //operate the claw with left/right buttons
-    claw = new GamePadClaw(this, gamepad2, robot.getLeftHand(),robot.getRightHand() , GamePadServo.Control.X_B  , 0.5);
+    claw = new GamePadClaw(this, gamepad2, robot.leftHand,robot.rightHand , GamePadServo.Control.X_B  , 0.5);
 
 
   }

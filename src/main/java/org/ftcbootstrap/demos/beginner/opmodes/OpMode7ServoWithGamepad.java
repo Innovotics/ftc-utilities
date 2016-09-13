@@ -1,5 +1,7 @@
 package org.ftcbootstrap.demos.beginner.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.ftcbootstrap.ActiveOpMode;
 import org.ftcbootstrap.components.operations.servos.GamePadServo;
 import org.ftcbootstrap.demos.beginner.MyFirstBot;
@@ -8,12 +10,11 @@ import org.ftcbootstrap.demos.beginner.MyFirstBot;
  * Note: This Exercise assumes that you have used your Robot Controller App to "scan" your hardware and
  * saved the configuration named: "MyFirstBot" and creating a class by the same name: {@link MyFirstBot}.
  * <p/>
- * Note:  It is assumed that the proper registry is used for this set of demos. To confirm please
- * search for "Enter your custom registry here"  in  {@link com.qualcomm.ftcrobotcontroller.FtcRobotControllerActivity}
- * <p/>
  * Summary: Use an Operation class to control servo with the gamepad buttons
  * See: {@link GamePadServo}
  */
+
+@TeleOp
 public class OpMode7ServoWithGamepad extends ActiveOpMode {
 
     private MyFirstBot robot;
@@ -40,7 +41,7 @@ public class OpMode7ServoWithGamepad extends ActiveOpMode {
 
         // GamePadServo.Control use the Y and A buttons for up and down and the  X and B buttons for left and right
         // Set initial position of server to 0.5
-        gamePadServo = new GamePadServo(this, gamepad1, robot.getServo(),GamePadServo.Control.Y_A, 0.5);
+        gamePadServo = new GamePadServo(this, gamepad1, robot.servo,GamePadServo.Control.Y_A, 0.5);
         gamePadServo.setOpModeLogLevel(1);
     }
 

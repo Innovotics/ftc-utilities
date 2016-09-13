@@ -1,5 +1,7 @@
 package org.ftcbootstrap.demos.beginner.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 import org.ftcbootstrap.ActiveOpMode;
 import org.ftcbootstrap.components.operations.motors.TankDrive;
 import org.ftcbootstrap.components.operations.motors.TankDriveToTime;
@@ -18,6 +20,10 @@ import org.ftcbootstrap.demos.beginner.MyFirstBot;
  *  <p/> Introduce state machine to haandle several drive steps
  * See:  {@link TankDrive}
  */
+
+
+
+@Autonomous
 public class OpMode5StateMachine extends ActiveOpMode {
 
     private MyFirstBot robot;
@@ -34,7 +40,7 @@ public class OpMode5StateMachine extends ActiveOpMode {
         robot = MyFirstBot.newConfig(hardwareMap, getTelemetryUtil());
 
         //create an operation to perform a tank drive
-        tankDriveToTime = new TankDriveToTime(this, robot.getMotor1(), robot.getMotor2());
+        tankDriveToTime = new TankDriveToTime(this, robot.motor1, robot.motor2);
         tankDriveToTime.setOpModeLogLevel(1);
 
         //Note The Telemetry Utility is designed to let you organize all telemetry data before sending it to
@@ -45,10 +51,6 @@ public class OpMode5StateMachine extends ActiveOpMode {
         step = 1;
 
     }
-
-
-
-
 
 
     /**

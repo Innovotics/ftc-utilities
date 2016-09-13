@@ -1,5 +1,7 @@
 package org.ftcbootstrap.demos.beginner.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 import org.ftcbootstrap.ActiveOpMode;
 import org.ftcbootstrap.components.operations.motors.MotorToTouch;
 import org.ftcbootstrap.demos.beginner.MyFirstBot;
@@ -18,6 +20,8 @@ import org.ftcbootstrap.demos.beginner.MyFirstBot;
  * In this example,  we use a special operation to handle all of that
  * see {@link org.ftcbootstrap.components.operations.motors.MotorToTouch}
  */
+
+@Autonomous
 public class OpMode4RunUntilTouch extends ActiveOpMode {
 
     private MyFirstBot robot;
@@ -32,7 +36,7 @@ public class OpMode4RunUntilTouch extends ActiveOpMode {
         robot = MyFirstBot.newConfig(hardwareMap, getTelemetryUtil());
 
         //create an operation to control a motor from a touch sensor
-        motorToTouch = new MotorToTouch( "motor1" , this, robot.getMotor1(), robot.getTouch());
+        motorToTouch = new MotorToTouch( "motor1" , this, robot.motor1, robot.touch);
         motorToTouch.setOpModeLogLevel(1);
 
         //Note The Telemetry Utility is designed to let you organize all telemetry data before sending it to

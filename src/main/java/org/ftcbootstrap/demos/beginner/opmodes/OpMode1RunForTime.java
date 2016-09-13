@@ -1,5 +1,7 @@
 package org.ftcbootstrap.demos.beginner.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 import org.ftcbootstrap.ActiveOpMode;
 import org.ftcbootstrap.demos.beginner.MyFirstBot;
 
@@ -17,6 +19,8 @@ import org.ftcbootstrap.demos.beginner.MyFirstBot;
  * at any time ( even during the 3 seconds sleep period).
  * Therefore, a more appropriate solution would be here: {@link OpMode2RunForTime} .
  */
+
+@Autonomous
 public class OpMode1RunForTime extends ActiveOpMode {
 
     private MyFirstBot robot;
@@ -55,21 +59,21 @@ public class OpMode1RunForTime extends ActiveOpMode {
 
 
         //PROBLEM L  kill switch code will ony be checked once
-        if ( robot.getTouch().isPressed() ) {
-            robot.getMotor1().setPower(0);
+        if ( robot.touch.isPressed() ) {
+            robot.motor1.setPower(0);
             setOperationsCompleted();
         }
         else {
 
             //run motor for 3 seconds
-            robot.getMotor1().setPower(1);
+            robot.motor1.setPower(1);
 
             //NOTE: This operation is generally not recommended because it causes the Opmode code to hold here
             //while the thread sleeps.   See the next example where an alternative soultion will be required
             sleep(3000);
             //waiting 3 seconds here (3000 miliseconds)
 
-            robot.getMotor1().setPower(0);
+            robot.motor1.setPower(0);
 
             //Note: the above is a linear one time operation so you need to call
             // setOperationsCompleted() to prevent activeLoop() from being called again

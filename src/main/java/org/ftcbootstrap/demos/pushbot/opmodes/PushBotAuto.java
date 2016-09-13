@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.pushbot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.ActiveOpMode;
@@ -10,9 +11,6 @@ import org.ftcbootstrap.components.utils.DriveDirection;
 /**
  * Note: This Exercise assumes that you have used your Robot Controller App to "scan" your hardware and
  * saved the configuration named: "Pushbot" and creating a class by the same name: {@link PushBot}.
- * <p/>
- * Note:  It is assumed that the proper registry is used for this set of demos. To confirm please
- * search for "Enter your custom registry here"  in  {@link com.qualcomm.ftcrobotcontroller.FtcRobotControllerActivity}
  * <p/>
  * Summary:
  * <p/>
@@ -28,6 +26,8 @@ import org.ftcbootstrap.components.utils.DriveDirection;
  * <p/>
  * Also see: {@link PushBot} for the saved configuration
  */
+
+@Autonomous
 public class PushBotAuto extends ActiveOpMode {
 
     private PushBot robot;
@@ -45,7 +45,7 @@ public class PushBotAuto extends ActiveOpMode {
         //specify configuration name save from scan operation
         robot = PushBot.newConfig(hardwareMap, getTelemetryUtil());
 
-        tankDriveToEncoder = new TankDriveToEncoder(this, robot.getLeftDrive(), robot.getRightDrive());
+        tankDriveToEncoder = new TankDriveToEncoder(this, robot.leftDrive, robot.rightDrive);
         tankDriveToEncoder.setOpModeLogLevel(0);
 
         getTelemetryUtil().addData("Init", getClass().getSimpleName() + " initialized.");
@@ -73,8 +73,8 @@ public class PushBotAuto extends ActiveOpMode {
 
       //  getTelemetryUtil().addData("Current Step: ", step);
 
-        int lp = robot.getLeftDrive().getCurrentPosition();
-        int rp = robot.getRightDrive().getCurrentPosition();
+        int lp = robot.leftDrive.getCurrentPosition();
+        int rp = robot.rightDrive.getCurrentPosition();
         getTelemetryUtil().addData("left motor position: ", lp);
         getTelemetryUtil().addData("right motor position: ",  rp);
         getTelemetryUtil().addData("dif: ",  lp - rp);

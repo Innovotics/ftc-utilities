@@ -21,14 +21,14 @@ import org.ftcbootstrap.RobotConfiguration;
 public class DemoBot extends RobotConfiguration {
 
     //sensors
-    private OpticalDistanceSensor ods1;
-    private TouchSensor touch1;
-    private ColorSensor mrColor1;
+    public OpticalDistanceSensor ods1;
+    public TouchSensor touch1;
+    public ColorSensor mrColor1;
 
     //motors
-    private DcMotor motor1;
-    private DcMotor motor2;
-    private Servo servo1;
+    public DcMotor motor1;
+    public DcMotor motor2;
+    public Servo servo1;
 
     /**
      * Factory method for this class
@@ -71,44 +71,6 @@ public class DemoBot extends RobotConfiguration {
 
     }
 
-    /**
-     * @return OpticalDistanceSensor
-     */
-    public OpticalDistanceSensor getOds1() {
-        return ods1;
-    }
-
-    /**
-     * @return TouchSensor
-     */
-    public TouchSensor getTouch1() {
-        return touch1;
-    }
-
-    /**
-     * @return Servo
-     */
-    public Servo getServo1() {
-        return servo1;
-    }
-
-    public ColorSensor getMrColor1() {
-        return mrColor1;
-    }
-
-    /**
-     * @return DcMotor
-     */
-    public DcMotor getMotor1() {
-        return motor1;
-    }
-
-    /**
-     * @return DcMotor
-     */
-    public DcMotor getMotor2() {
-        return motor2;
-    }
 
 
 }

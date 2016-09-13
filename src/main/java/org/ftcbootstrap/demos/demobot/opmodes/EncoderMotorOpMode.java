@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.demobot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.demos.demobot.DemoBot;
@@ -18,6 +19,9 @@ import org.ftcbootstrap.components.utils.MotorDirection;
  * <p/>
  * Opmode demonstrates running a motor from and encoder
  */
+
+
+@Autonomous
 public class EncoderMotorOpMode extends ActiveOpMode {
 
     private DemoBot robot;
@@ -34,7 +38,7 @@ public class EncoderMotorOpMode extends ActiveOpMode {
         //specify configuration name save from scan operation
         robot = DemoBot.newConfig(hardwareMap, getTelemetryUtil());
 
-        motorToEncoder = new MotorToEncoder(  this, robot.getMotor1());
+        motorToEncoder = new MotorToEncoder(  this, robot.motor1);
         motorToEncoder.setName("motor1");
 
         getTelemetryUtil().addData("Init", getClass().getSimpleName() + " initialized.");
@@ -103,13 +107,13 @@ public class EncoderMotorOpMode extends ActiveOpMode {
 
 
     private void checkForKillSwitch() throws InterruptedException {
-        if (robot.getTouch1().isPressed()) {
+        if (robot.touch1.isPressed()) {
 
             if (motorToEncoder.isRunning()) {
                 motorToEncoder.stop();
             } else {
-                robot.getMotor1().setPower(0);
-                robot.getMotor2().setPower(0);
+                robot.motor1.setPower(0);
+                robot.motor2.setPower(0);
             }
             step = 99;
 

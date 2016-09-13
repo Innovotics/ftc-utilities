@@ -1,5 +1,7 @@
 package org.ftcbootstrap.demos.pushbot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 import org.ftcbootstrap.ActiveOpMode;
 import org.ftcbootstrap.components.operations.motors.TankDrive;
 import org.ftcbootstrap.demos.pushbot.PushBot;
@@ -8,9 +10,6 @@ import org.ftcbootstrap.components.utils.DriveDirection;
 /**
  * Note: This Exercise assumes that you have used your Robot Controller App to "scan" your hardware and
  * saved the configuration named: "Pushbot" and creating a class by the same name: {@link PushBot}.
- * <p/>
- * Note:  It is assumed that the proper registry is used for this set of demos. To confirm please
- * search for "Enter your custom registry here"  in  {@link com.qualcomm.ftcrobotcontroller.FtcRobotControllerActivity}
  * <p/>
  * Summary:
  * <p/>
@@ -26,6 +25,8 @@ import org.ftcbootstrap.components.utils.DriveDirection;
  * <p/>
  * Also see: {@link PushBot} for the saved configuration
  */
+
+@Autonomous
 public class PushBotTouchEvent extends ActiveOpMode {
 
     private PushBot robot;
@@ -40,7 +41,7 @@ public class PushBotTouchEvent extends ActiveOpMode {
 
         //specify configuration name save from scan operation
         robot = PushBot.newConfig(hardwareMap, getTelemetryUtil());
-        tankDrive  = new TankDrive(this, robot.getLeftDrive(), robot.getLeftDrive());
+        tankDrive  = new TankDrive(this, robot.leftDrive, robot.rightDrive);
 
         getTelemetryUtil().addData("Init", getClass().getSimpleName() + " initialized.");
         getTelemetryUtil().sendTelemetry();
@@ -56,7 +57,7 @@ public class PushBotTouchEvent extends ActiveOpMode {
     @Override
     protected void activeLoop()  throws InterruptedException {
 
-        if ( robot.getTouchSensor().isPressed()) {
+        if ( robot.touchSensor.isPressed()) {
             tankDrive.stop();
         }
         else {

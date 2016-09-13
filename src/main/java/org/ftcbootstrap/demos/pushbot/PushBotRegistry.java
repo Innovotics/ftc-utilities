@@ -1,8 +1,6 @@
 package org.ftcbootstrap.demos.pushbot;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
-import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
-
+import org.ftcbootstrap.BootstrapRegistrar;
 import org.ftcbootstrap.demos.TelemetryTest;
 import org.ftcbootstrap.demos.pushbot.opmodes.PushBotAuto;
 import org.ftcbootstrap.demos.pushbot.opmodes.PushBotManual;
@@ -16,32 +14,20 @@ import org.ftcbootstrap.demos.pushbot.opmodes.PushBotTouchEvent;
 /**
  * Register Op Modes
  */
-public class PushBotRegistry implements OpModeRegister {
+public class PushBotRegistry extends BootstrapRegistrar {
 
-    /**
-     * The Op Mode Manager will call this method when it wants a list of all
-     * available op modes. Add your op mode to the list to enable it.
-     *
-     * @param manager op mode manager
-     */
-    public void register(OpModeManager manager) {
+    protected Class[] getOpmodeClasses() {
+        Class[] classes = {
 
-    /*
-     * register your op modes here.
-     * The first parameter is the name of the op mode
-     * The second parameter is the op mode class property
-     *
-     * If two or more op modes are registered with the same name, the app will display an error.
-     */
-        manager.register("PushBotAuto", PushBotAuto.class);
-        manager.register("PushBotAutoSensors", PushBotAutoSensors.class);
-        manager.register("PushBotManual", PushBotManual.class);
-        manager.register("PushBotManual2", PushBotManual2.class);
-        manager.register("PushBotOdsDetectEvent", PushBotOdsDetectEvent.class);
-        manager.register("PushBotOdsFollowEvent", PushBotOdsFollowEvent.class);
-        manager.register("PushBotTouchEvent", PushBotTouchEvent.class);
-
-        manager.register("TelemetryTest", TelemetryTest.class);
-
+                PushBotAuto.class,
+                PushBotAutoSensors.class,
+                PushBotManual.class,
+                PushBotManual2.class,
+                PushBotOdsDetectEvent.class,
+                PushBotOdsFollowEvent.class,
+                PushBotTouchEvent.class,
+                TelemetryTest.class
+        };
+        return classes;
     }
 }

@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.pushbot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.ActiveOpMode;
@@ -29,6 +30,8 @@ import org.ftcbootstrap.components.utils.DriveDirection;
  * <p/>
  * Also see: {@link PushBot} for the saved configuration
  */
+
+@Autonomous
 public class PushBotAutoSensors extends ActiveOpMode {
 
     private PushBot robot;
@@ -52,9 +55,9 @@ public class PushBotAutoSensors extends ActiveOpMode {
         //specify configuration name save from scan operation
         robot = PushBot.newConfig(hardwareMap, getTelemetryUtil());
 
-        tankDriveToEncoder = new TankDriveToEncoder( this, robot.getLeftDrive(), robot.getRightDrive());
-        tankDriveToODS = new TankDriveToODS( this, robot.getOds(), robot.getLeftDrive(), robot.getRightDrive() );
-        motorToTouch  = new MotorToTouch("left arm" , this, robot.getLeftArm(), robot.getTouchSensor());
+        tankDriveToEncoder = new TankDriveToEncoder( this, robot.leftDrive, robot.rightDrive);
+        tankDriveToODS = new TankDriveToODS( this, robot.ods, robot.leftDrive, robot.rightDrive );
+        motorToTouch  = new MotorToTouch("left arm" , this, robot.leftArm, robot.touchSensor);
 
         getTelemetryUtil().addData("Init", getClass().getSimpleName() + " initialized.");
         getTelemetryUtil().sendTelemetry();

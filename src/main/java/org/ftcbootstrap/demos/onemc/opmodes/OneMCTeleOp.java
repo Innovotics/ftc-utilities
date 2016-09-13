@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.onemc.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.ActiveOpMode;
@@ -26,6 +27,8 @@ import org.ftcbootstrap.demos.onemc.OneMCBot;
  * <p/>
  * Also see: {@link OneMCBot} for the saved configuration
  */
+
+@TeleOp
 public class OneMCTeleOp extends ActiveOpMode {
 
     private GamePadTankDrive tankDrive;
@@ -51,7 +54,7 @@ public class OneMCTeleOp extends ActiveOpMode {
         super.onStart();
 
         //set up tank drive operation to use the gamepad joysticks
-        tankDrive = new GamePadTankDrive(this, gamepad1, robot.getLeftDrive(), robot.getRightDrive());
+        tankDrive = new GamePadTankDrive(this, gamepad1, robot.leftDrive, robot.rightDrive);
         tankDrive.startRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
     }

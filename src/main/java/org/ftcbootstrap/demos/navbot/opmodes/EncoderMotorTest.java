@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.navbot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.ActiveOpMode;
@@ -10,10 +11,6 @@ import org.ftcbootstrap.demos.navbot.NavBot;
 /**
  * Note: This Exercise assumes that you have used your Robot Controller App to "scan" your hardware and
  * saved the configuration named: "NavBot" and creating a class by the same name: {@link NavBot}.
- * <p/>
- * Note:  It is assumed that the proper registry is used for this set of demos. To confirm please
- * search for "Enter your custom registry here"  in  {@link com.qualcomm.ftcrobotcontroller.FtcRobotControllerActivity}
- * <p/>
  * Summary:
  * <p/>
  *
@@ -27,6 +24,8 @@ import org.ftcbootstrap.demos.navbot.NavBot;
  * <p/>
  * Also see: {@link NavBot} for the saved configuration
  */
+
+@Autonomous
 public class EncoderMotorTest extends ActiveOpMode {
 
     private NavBot robot;
@@ -45,9 +44,9 @@ public class EncoderMotorTest extends ActiveOpMode {
         //specify configuration name save from scan operation
         robot = NavBot.newConfig(hardwareMap, getTelemetryUtil());
 
-        leftMotorToEncoder = new MotorToEncoder(  this, robot.getLeftDrive());
+        leftMotorToEncoder = new MotorToEncoder(  this, robot.leftDrive);
         leftMotorToEncoder.setName("left runToTarget");
-        rightMotorToEncoder = new MotorToEncoder( this, robot.getRightDrive());
+        rightMotorToEncoder = new MotorToEncoder( this, robot.rightDrive);
         rightMotorToEncoder.setName("right runToTarget");
         getTelemetryUtil().addData("Init", getClass().getSimpleName() + " initialized.");
         getTelemetryUtil().sendTelemetry();
@@ -100,8 +99,8 @@ public class EncoderMotorTest extends ActiveOpMode {
 
             default:
                 setOperationsCompleted();
-                getTelemetryUtil().addData("OperationsCompleted Left ", robot.getLeftDrive().getCurrentPosition());
-                getTelemetryUtil().addData("OperationsCompleted Right", robot.getRightDrive().getCurrentPosition());
+                getTelemetryUtil().addData("OperationsCompleted Left ", robot.leftDrive.getCurrentPosition());
+                getTelemetryUtil().addData("OperationsCompleted Right", robot.rightDrive.getCurrentPosition());
 
                 break;
 
@@ -130,8 +129,8 @@ public class EncoderMotorTest extends ActiveOpMode {
                 motorDirection, DcMotor.RunMode.RUN_USING_ENCODER);
 
         if (targetReached) {
-            getTelemetryUtil().addData("step" + step + " A: Left target reached ", robot.getLeftDrive().getCurrentPosition());
-            getTelemetryUtil().addData("step" + step + " A: Right Position", robot.getRightDrive().getCurrentPosition());
+            getTelemetryUtil().addData("step" + step + " A: Left target reached ", robot.leftDrive.getCurrentPosition());
+            getTelemetryUtil().addData("step" + step + " A: Right Position", robot.rightDrive.getCurrentPosition());
             step++;
             stepCounter = 0;
         }

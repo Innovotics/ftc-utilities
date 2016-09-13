@@ -1,5 +1,7 @@
 package org.ftcbootstrap.demos.beginner.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.ftcbootstrap.ActiveOpMode;
 import org.ftcbootstrap.components.operations.motors.GamePadTankDrive;
 import org.ftcbootstrap.demos.beginner.MyFirstBot;
@@ -11,6 +13,8 @@ import org.ftcbootstrap.demos.beginner.MyFirstBot;
  * Summary:  Use an Operation class to perform a tank drive using the gamepad joysticks.
  * See: {@link GamePadTankDrive}
  */
+
+@TeleOp
 public class OpMode6DriveWithGamepad extends ActiveOpMode {
 
     private MyFirstBot robot;
@@ -35,7 +39,7 @@ public class OpMode6DriveWithGamepad extends ActiveOpMode {
     protected void onStart() throws InterruptedException {
         super.onStart();
         //create the operation  to perform a tank drive using the gamepad joysticks.
-        gamePadTankDrive = new GamePadTankDrive(this,gamepad1, robot.getMotor1(), robot.getMotor2());
+        gamePadTankDrive = new GamePadTankDrive(this,gamepad1, robot.motor1, robot.motor2);
         gamePadTankDrive.setOpModeLogLevel(1);
 
     }

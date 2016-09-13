@@ -2,6 +2,7 @@ package org.ftcbootstrap.demos.navbot.opmodes;
 
 import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.ActiveOpMode;
@@ -34,6 +35,8 @@ import org.ftcbootstrap.demos.navbot.NavBot;
  * <p/>
  * Also see: {@link NavBot} for the saved configuration
  */
+
+@TeleOp
 public class NavBotTelemetry extends ActiveOpMode {
 
     private NavBot robot;
@@ -62,12 +65,12 @@ public class NavBotTelemetry extends ActiveOpMode {
         //specify configuration name save from scan operation
         robot = NavBot.newConfig(hardwareMap, getTelemetryUtil());
 
-        leftMotorToEncoder = new MotorToEncoder( this, robot.getLeftDrive());
+        leftMotorToEncoder = new MotorToEncoder( this, robot.leftDrive);
         leftMotorToEncoder.setName("left runToTarget");
-        rightMotorToEncoder = new MotorToEncoder( this, robot.getRightDrive());
+        rightMotorToEncoder = new MotorToEncoder( this, robot.rightDrive);
         rightMotorToEncoder.setName("right runToTarget");
 
-        colorSensorComponent = new ColorSensorComponent(this, robot.getMrColor(), ColorSensorComponent.ColorSensorDevice.MODERN_ROBOTICS_I2C);
+        colorSensorComponent = new ColorSensorComponent(this, robot.mrColor, ColorSensorComponent.ColorSensorDevice.MODERN_ROBOTICS_I2C);
         colorSensorComponent.enableLed(false);
 
        // accelerometerComponent =
@@ -86,20 +89,20 @@ public class NavBotTelemetry extends ActiveOpMode {
         step = 1;
 
         //set up tank runToTarget operation to use the gamepad joysticks
-        tankDrive =  new GamePadTankDrive( this, gamepad1,robot.getLeftDrive(), robot.getRightDrive());
+        tankDrive =  new GamePadTankDrive( this, gamepad1,robot.leftDrive, robot.rightDrive);
         tankDrive.startRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         //set up arm motor operation using the up/down buttons
-        armMotor = new GamePadMotor(this, gamepad1, robot.getArm(), GamePadMotor.Control.UP_DOWN_BUTTONS);
+        armMotor = new GamePadMotor(this, gamepad1, robot.arm, GamePadMotor.Control.UP_DOWN_BUTTONS);
 
         //operate the claw with GamePadServo.Control. Use the X and B buttons for up and down and the  X and B buttons for left and right
-        claw = new GamePadClaw(this, gamepad1, robot.getLeftClaw(), robot.getRightClaw(), GamePadServo.Control.X_B, 0.8);
+        claw = new GamePadClaw(this, gamepad1, robot.leftClaw, robot.rightClaw, GamePadServo.Control.X_B, 0.8);
 
         // calibrate the gyro.
-        robot.getGyro().calibrate();
+        robot.gyro.calibrate();
 
         // make sure the gyro is calibrated.
-        while (robot.getGyro().isCalibrating())  {
+        while (robot.gyro.isCalibrating())  {
             this.waitForNextHardwareCycle();
         }
 
@@ -118,25 +121,25 @@ public class NavBotTelemetry extends ActiveOpMode {
         armMotor.update();
         claw.update();
 
-        getTelemetryUtil().addData("01: Encoder Left Pos", robot.getLeftDrive().getCurrentPosition());
-        getTelemetryUtil().addData("02: Encoder Right Pos", robot.getRightDrive().getCurrentPosition());
+        getTelemetryUtil().addData("01: Encoder Left Pos", robot.leftDrive.getCurrentPosition());
+        getTelemetryUtil().addData("02: Encoder Right Pos", robot.rightDrive.getCurrentPosition());
 
-        getTelemetryUtil().addData("03a: Gyro heading:", robot.getGyro().getHeading());
-        getTelemetryUtil().addData("03b: Gyro rawX:", robot.getGyro().rawX());
-        getTelemetryUtil().addData("03c: Gyro rawY:", robot.getGyro().rawY());
-        getTelemetryUtil().addData("03d: Gyro rawZ:", robot.getGyro().rawZ());
-        //getTelemetryUtil().addData("03e: Gyro getIntegratedZValue:", ((ModernRoboticsI2cGyro)robot.getGyro()).getIntegratedZValue());
+        getTelemetryUtil().addData("03a: Gyro heading:", robot.gyro.getHeading());
+        getTelemetryUtil().addData("03b: Gyro rawX:", robot.gyro.rawX());
+        getTelemetryUtil().addData("03c: Gyro rawY:", robot.gyro.rawY());
+        getTelemetryUtil().addData("03d: Gyro rawZ:", robot.gyro.rawZ());
+        //getTelemetryUtil().addData("03e: Gyro getIntegratedZValue:", ((ModernRoboticsI2cGyro)robot.gyro).getIntegratedZValue());
 
         getTelemetryUtil().addData("04a accel x" , accelerometerComponent.getX());
         getTelemetryUtil().addData("04b accel y" ,accelerometerComponent.getY());
         getTelemetryUtil().addData("04c accel z", accelerometerComponent.getZ());
 
-        getTelemetryUtil().addData("05a: Left Claw Positon:", robot.getLeftClaw().getPosition());
-        getTelemetryUtil().addData("05b: Right Claw Positon:", robot.getRightClaw().getPosition());
+        getTelemetryUtil().addData("05a: Left Claw Positon:", robot.leftClaw.getPosition());
+        getTelemetryUtil().addData("05b: Right Claw Positon:", robot.rightClaw.getPosition());
 
-        getTelemetryUtil().addData("06: ODS Bumper:", robot.getOdsBumper().getLightDetected());
+        getTelemetryUtil().addData("06: ODS Bumper:", robot.odsBumper.getLightDetected());
 
-        getTelemetryUtil().addData("07: ODS Ground:", robot.getOdsGround().getLightDetected());
+        getTelemetryUtil().addData("07: ODS Ground:", robot.odsGround.getLightDetected());
 
         boolean isRed = colorSensorComponent.isRed(5, 2, 2);
         getTelemetryUtil().addData("08: isRed 5, 2, 2 ", isRed);
@@ -144,7 +147,7 @@ public class NavBotTelemetry extends ActiveOpMode {
         getTelemetryUtil().addData("09: isBlue 10, 2, 2 ", isBlue);
         colorSensorComponent.addTelemetry("10: Color Sensor Values");
 
-        getTelemetryUtil().addData("10 arm power", robot.getArm().getPower());
+        getTelemetryUtil().addData("10 arm power", robot.arm.getPower());
 
 
 

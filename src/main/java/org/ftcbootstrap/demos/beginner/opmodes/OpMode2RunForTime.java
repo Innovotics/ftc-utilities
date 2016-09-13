@@ -1,5 +1,7 @@
 package org.ftcbootstrap.demos.beginner.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 import org.ftcbootstrap.ActiveOpMode;
 import org.ftcbootstrap.demos.beginner.MyFirstBot;
 
@@ -13,6 +15,8 @@ import org.ftcbootstrap.demos.beginner.MyFirstBot;
  * Summary
  * Use a touch sensor to kill the motor at any time during the program
  */
+
+@Autonomous
 public class OpMode2RunForTime extends ActiveOpMode {
 
     private MyFirstBot robot;
@@ -44,8 +48,8 @@ public class OpMode2RunForTime extends ActiveOpMode {
         // each hardware cycle period.  There is no sleep method that prvents the kill swithc from being
         // rechecked as in the prior example.
         //kill switch can be pressed  at any time
-        if ( robot.getTouch().isPressed() ) {
-            robot.getMotor1().setPower(0);
+        if ( robot.touch.isPressed() ) {
+            robot.motor1.setPower(0);
             setOperationsCompleted();
         }
         else {
@@ -53,11 +57,11 @@ public class OpMode2RunForTime extends ActiveOpMode {
             // therefore the the above kill switch will work whenever you press it/
             //See the next example that incorportates the timer into the motor operation
             if (getTimer().targetReached(3)) {
-                robot.getMotor1().setPower(0);
+                robot.motor1.setPower(0);
                 setOperationsCompleted();
             }
             else {
-                robot.getMotor1().setPower(1);
+                robot.motor1.setPower(1);
             }
         }
 

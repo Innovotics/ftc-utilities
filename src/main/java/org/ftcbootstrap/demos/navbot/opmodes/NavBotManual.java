@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.navbot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.ActiveOpMode;
@@ -28,6 +29,8 @@ import org.ftcbootstrap.demos.navbot.NavBot;
  * <p/>
  * Also see: {@link NavBot} for the saved configuration
  */
+
+@TeleOp
 public class NavBotManual extends ActiveOpMode {
 
     private GamePadTankDrive tankDrive;
@@ -55,14 +58,14 @@ public class NavBotManual extends ActiveOpMode {
         super.onStart();
 
         //set up tank drive operation to use the gamepad joysticks
-        tankDrive = new GamePadTankDrive(this, gamepad1, robot.getLeftDrive(), robot.getRightDrive());
+        tankDrive = new GamePadTankDrive(this, gamepad1, robot.leftDrive, robot.rightDrive);
         tankDrive.startRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         //set up arm motor operation using the up/down buttons
-        armMotorStick = new GamePadMotor(this, gamepad1, robot.getArm(), GamePadMotor.Control.UP_DOWN_BUTTONS);
+        armMotorStick = new GamePadMotor(this, gamepad1, robot.arm, GamePadMotor.Control.UP_DOWN_BUTTONS);
 
         //operate the claw with GamePadServo.Control. Use the X and B buttons for up and down and the  X and B buttons for left and right
-        claw = new GamePadClaw(this, gamepad1, robot.getLeftClaw(), robot.getRightClaw(), GamePadServo.Control.X_B, 0.8);
+        claw = new GamePadClaw(this, gamepad1, robot.leftClaw, robot.rightClaw, GamePadServo.Control.X_B, 0.8);
 
     }
 

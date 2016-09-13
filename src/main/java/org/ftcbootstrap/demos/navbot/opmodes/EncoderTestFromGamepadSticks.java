@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.navbot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.ActiveOpMode;
@@ -24,6 +25,8 @@ import org.ftcbootstrap.demos.navbot.NavBot;
  * <p/>
  * Also see: {@link NavBot} for the saved configuration
  */
+
+@TeleOp
 public class EncoderTestFromGamepadSticks extends ActiveOpMode {
 
     private NavBot robot;
@@ -43,9 +46,9 @@ public class EncoderTestFromGamepadSticks extends ActiveOpMode {
         //specify configuration name save from scan operation
         robot = NavBot.newConfig(hardwareMap, getTelemetryUtil());
 
-        leftMotorToEncoder = new MotorToEncoder(this, robot.getLeftDrive());
+        leftMotorToEncoder = new MotorToEncoder(this, robot.leftDrive);
         leftMotorToEncoder.setName("left runToTarget"  );
-        rightMotorToEncoder = new MotorToEncoder(this, robot.getRightDrive());
+        rightMotorToEncoder = new MotorToEncoder(this, robot.rightDrive);
         rightMotorToEncoder.setName("right runToTarget"  );
 
         getTelemetryUtil().addData("Init", getClass().getSimpleName() + " initialized.");
@@ -59,7 +62,7 @@ public class EncoderTestFromGamepadSticks extends ActiveOpMode {
     protected void onStart() throws InterruptedException  {
         super.onStart();
         //set up tank runToTarget operation to use the gamepad joysticks
-        tankDrive =  new GamePadTankDrive( this, gamepad1,robot.getLeftDrive(), robot.getRightDrive());
+        tankDrive =  new GamePadTankDrive( this, gamepad1,robot.leftDrive, robot.rightDrive);
         tankDrive.startRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         step = 1;
@@ -77,8 +80,8 @@ public class EncoderTestFromGamepadSticks extends ActiveOpMode {
 
         tankDrive.update();
 
-        getTelemetryUtil().addData("Left Position", robot.getLeftDrive().getCurrentPosition());
-        getTelemetryUtil().addData("RightPosition", robot.getRightDrive().getCurrentPosition());
+        getTelemetryUtil().addData("Left Position", robot.leftDrive.getCurrentPosition());
+        getTelemetryUtil().addData("RightPosition", robot.rightDrive.getCurrentPosition());
 
 
         //send any telemetry that may have been added in the above operations

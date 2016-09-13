@@ -3,7 +3,6 @@ package org.ftcbootstrap.demos.pushbot;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.IrSeekerSensor;
 import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.TouchSensor;
@@ -23,16 +22,16 @@ import org.ftcbootstrap.components.utils.TelemetryUtil;
 public class PushBot extends RobotConfiguration {
 
     //motors
-    private DcMotor leftDrive;
-    private DcMotor rightDrive;
-    private DcMotor leftArm;
+    public DcMotor leftDrive;
+    public DcMotor rightDrive;
+    public DcMotor leftArm;
 
-    private Servo leftHand;
-    private Servo rightHand;
+    public Servo leftHand;
+    public Servo rightHand;
 
-    private OpticalDistanceSensor ods;
-    private TouchSensor touchSensor;
-    private ColorSensor mrColor;
+    public OpticalDistanceSensor ods;
+    public TouchSensor touchSensor;
+    public ColorSensor mrColor;
 
     /**
      * Factory method for this class
@@ -76,57 +75,5 @@ public class PushBot extends RobotConfiguration {
 
     }
 
-    /**
-     * @return DcMotor
-     */
-    public DcMotor getLeftDrive() {
-        return leftDrive;
-    }
 
-    /**
-     * @return DcMotor
-     */
-    public DcMotor getRightDrive() {
-        return rightDrive;
-    }
-
-    /**
-     * @return DcMotor
-     */
-    public DcMotor getLeftArm() {
-        return leftArm;
-    }
-
-    /**
-     * @return Servo
-     */
-    public Servo getLeftHand() {
-        return leftHand;
-    }
-
-    /**
-     * @return Servo
-     */
-    public Servo getRightHand() {
-        return rightHand;
-    }
-
-    /**
-     * @return OpticalDistanceSensor
-     */
-    public OpticalDistanceSensor getOds() {
-        return ods;
-    }
-
-
-    /**
-     * @return TouchSensor
-     */
-    public TouchSensor getTouchSensor() {
-        return touchSensor;
-    }
-
-    public ColorSensor getMrColor() {
-        return mrColor;
-    }
 }

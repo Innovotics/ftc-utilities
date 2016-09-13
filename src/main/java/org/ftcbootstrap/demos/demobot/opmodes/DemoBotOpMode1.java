@@ -12,6 +12,7 @@ import org.ftcbootstrap.demos.demobot.DemoBot;
 import org.ftcbootstrap.ActiveOpMode;
 
 import com.qualcomm.ftcrobotcontroller.R;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 /**
  * Note: This Exercise assumes that you have used your Robot Controller App to "scan" your hardware and
@@ -28,6 +29,8 @@ import com.qualcomm.ftcrobotcontroller.R;
  * <p/>
  * See: {@link GamePadMotor} ,  {@link GamePadServo}  , {@link ServoToTouch}
  */
+
+@TeleOp
 public class DemoBotOpMode1 extends ActiveOpMode {
 
     private DemoBot robot;
@@ -48,12 +51,12 @@ public class DemoBotOpMode1 extends ActiveOpMode {
         robot = DemoBot.newConfig(hardwareMap, getTelemetryUtil());
 
          //create an operation to stop the servo with a touch sensor
-        servoToTouch = new ServoToTouch("touch sensor for servo1", this, robot.getTouch1(), robot.getServo1(), 0.5);
+        servoToTouch = new ServoToTouch("touch sensor for servo1", this, robot.touch1, robot.servo1, 0.5);
 
         getTelemetryUtil().addData("Init", getClass().getSimpleName() + " initialized.");
         getTelemetryUtil().sendTelemetry();
 
-        colorSensorComponent = new ColorSensorComponent(this, robot.getMrColor1(), ColorSensorComponent.ColorSensorDevice.MODERN_ROBOTICS_I2C);
+        colorSensorComponent = new ColorSensorComponent(this, robot.mrColor1, ColorSensorComponent.ColorSensorDevice.MODERN_ROBOTICS_I2C);
         colorSensorComponent.enableLed(false);
 
         // get a reference to the RelativeLayout so we can change the background
@@ -67,11 +70,11 @@ public class DemoBotOpMode1 extends ActiveOpMode {
         super.onStart();
 
         //create operations that turn the motors by moving the joysticks left and right
-        gamePadMotor1 = new GamePadMotor(this,gamepad1, robot.getMotor1(), GamePadMotor.Control.LEFT_STICK_X);
-        gamePadMotor2 = new GamePadMotor(this, gamepad1, robot.getMotor2(), GamePadMotor.Control.RIGHT_STICK_X);
+        gamePadMotor1 = new GamePadMotor(this,gamepad1, robot.motor1, GamePadMotor.Control.LEFT_STICK_X);
+        gamePadMotor2 = new GamePadMotor(this, gamepad1, robot.motor2, GamePadMotor.Control.RIGHT_STICK_X);
 
         //create an operation to move the servo with gamepad button y,a (updown)
-        gamePadServo = new GamePadServo(this,gamepad2, robot.getServo1(), GamePadServo.Control.Y_A, 0.5);
+        gamePadServo = new GamePadServo(this,gamepad2, robot.servo1, GamePadServo.Control.Y_A, 0.5);
 
         colorSensorComponent.enableLed(true);
     }
@@ -98,7 +101,7 @@ public class DemoBotOpMode1 extends ActiveOpMode {
             servoToTouch.incrementServoTargetPosition(0.01);
         }
 
-        getTelemetryUtil().addData("ods  ld", robot.getOds1().getLightDetected());
+        getTelemetryUtil().addData("ods  ld", robot.ods1.getLightDetected());
        // getTelemetryUtil().addData("ods  ld raw", robot.getOds1().getLightDetectedRaw());
 
         addColorTelemetry();

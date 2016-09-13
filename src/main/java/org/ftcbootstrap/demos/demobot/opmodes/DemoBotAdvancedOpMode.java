@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.demobot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.demos.demobot.DemoBot;
@@ -23,6 +24,8 @@ import org.ftcbootstrap.components.utils.DriveDirection;
  * 2) Drive a vehicle using and ODS sensor
  * 3) Use the color sensor component
  */
+
+@Autonomous
 public class DemoBotAdvancedOpMode extends ActiveOpMode {
 
     private DemoBot robot;
@@ -42,9 +45,9 @@ public class DemoBotAdvancedOpMode extends ActiveOpMode {
         //specify configuration name save from scan operation
         robot = DemoBot.newConfig(hardwareMap, getTelemetryUtil());
 
-        tankDriveToEncoder = new TankDriveToEncoder(this, robot.getMotor1(), robot.getMotor2());
-        tankDriveToODS = new TankDriveToODS(this, robot.getOds1(), robot.getMotor1(), robot.getMotor2());
-        colorSensorComponent = new ColorSensorComponent(this, robot.getMrColor1(), ColorSensorComponent.ColorSensorDevice.MODERN_ROBOTICS_I2C);
+        tankDriveToEncoder = new TankDriveToEncoder(this, robot.motor1, robot.motor2);
+        tankDriveToODS = new TankDriveToODS(this, robot.ods1, robot.motor1, robot.motor2);
+        colorSensorComponent = new ColorSensorComponent(this, robot.mrColor1, ColorSensorComponent.ColorSensorDevice.MODERN_ROBOTICS_I2C);
         colorSensorComponent.enableLed(false);
 
         getTelemetryUtil().addData("Init", getClass().getSimpleName() + " initialized.");
@@ -165,7 +168,7 @@ public class DemoBotAdvancedOpMode extends ActiveOpMode {
 
 
     private void checkForKillSwitch() throws InterruptedException {
-        if (robot.getTouch1().isPressed()) {
+        if (robot.touch1.isPressed()) {
 
             if (tankDriveToEncoder.isDriving()) {
                 tankDriveToEncoder.stop();
