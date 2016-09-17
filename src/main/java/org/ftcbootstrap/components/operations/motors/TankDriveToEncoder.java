@@ -60,7 +60,7 @@ public class TankDriveToEncoder extends OpModeComponent {
         boolean targetReached = false;
 
         MotorDirection motorDirection = TankDrive.leftMotorDirectionOn(driveDirection);
-        if (driveDirection == DriveDirection.PIVOT_FORWARD_LEFT || driveDirection == DriveDirection.PIVOT_BACKWARD_LEFT) {
+        if (driveDirection == DriveDirection.PIVOT_FORWARD_LEFT || driveDirection == DriveDirection.PIVOT_BACKWARD_RIGHT) {
             leftMotorToEncoder.stop();
         }
         else {
@@ -78,7 +78,7 @@ public class TankDriveToEncoder extends OpModeComponent {
         }
 
         motorDirection = TankDrive.rightMotorDirectionOn(driveDirection);
-        if (driveDirection == DriveDirection.PIVOT_FORWARD_RIGHT || driveDirection == DriveDirection.PIVOT_BACKWARD_RIGHT) {
+        if (driveDirection == DriveDirection.PIVOT_FORWARD_RIGHT || driveDirection == DriveDirection.PIVOT_BACKWARD_LEFT) {
             rightMotorEncoder.stop();
         }
         else {

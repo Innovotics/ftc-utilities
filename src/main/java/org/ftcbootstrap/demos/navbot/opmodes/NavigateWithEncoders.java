@@ -46,7 +46,7 @@ public class NavigateWithEncoders extends ActiveOpMode {
         robot = NavBot.newConfig(hardwareMap, getTelemetryUtil());
 
         tankDriveToEncoder = new TankDriveToEncoder(this, robot.leftDrive, robot.rightDrive);
-        tankDriveToEncoder.setOpModeLogLevel(0);
+        tankDriveToEncoder.setOpModeLogLevel(99999);
 
         getTelemetryUtil().addData("Init", getClass().getSimpleName() + " initialized.");
         getTelemetryUtil().sendTelemetry();
@@ -75,9 +75,9 @@ public class NavigateWithEncoders extends ActiveOpMode {
 
         int lp = robot.leftDrive.getCurrentPosition();
         int rp = robot.rightDrive.getCurrentPosition();
-        getTelemetryUtil().addData("left motor position in step:" + step, lp);
-        getTelemetryUtil().addData("right motor position in step:" + step, rp);
-        getTelemetryUtil().addData("dif in step:" + step,  lp - rp);
+        //getTelemetryUtil().addData("left motor position in step:" + step, lp);
+        //getTelemetryUtil().addData("right motor position in step:" + step, rp);
+        //getTelemetryUtil().addData("dif in step:" + step,  lp - rp);
         boolean targetReached = false;
 
         switch (step) {
@@ -92,20 +92,19 @@ public class NavigateWithEncoders extends ActiveOpMode {
                 break;
 
             case 2:
-                //turn right
+                //1st turn right
                 getTelemetryUtil().addData("step" + step + ": handleDriveOperation", "PIVOT_RIGHT");
                 targetReached = tankDriveToEncoder.runToTarget(0.4, 5050,
                         DriveDirection.PIVOT_FORWARD_RIGHT,DcMotor.RunMode.RUN_TO_POSITION);
                 if (targetReached) {
                     step++;
-                   // step = 7;
                 }
                 break;
 
             case 3:
                 //full power  forward
                 getTelemetryUtil().addData("step" + step + ": handleDriveOperation", "DRIVE_FORWARD");
-                targetReached = tankDriveToEncoder.runToTarget(.65, 5000,
+                targetReached = tankDriveToEncoder.runToTarget(.65, 4000,
                         DriveDirection.DRIVE_FORWARD,DcMotor.RunMode.RUN_TO_POSITION);
                 if (targetReached) {
                     step++;
@@ -113,8 +112,8 @@ public class NavigateWithEncoders extends ActiveOpMode {
                 break;
 
             case 4:
-                //turn right
-                getTelemetryUtil().addData("step" + step + ": handleDriveOperation", "PIVOT_RIGHT");
+                //2nd turn right
+                getTelemetryUtil().addData("step" + step + ": handleDriveOperation", "PIVOT_RIGHT ");
                 targetReached = tankDriveToEncoder.runToTarget(0.4, 5050,
                         DriveDirection.PIVOT_FORWARD_RIGHT,DcMotor.RunMode.RUN_TO_POSITION);
                 if (targetReached) {
@@ -125,12 +124,56 @@ public class NavigateWithEncoders extends ActiveOpMode {
             case 5:
                 //full power  forward
                 getTelemetryUtil().addData("step" + step + ": handleDriveOperation", "DRIVE_FORWARD");
-                targetReached = tankDriveToEncoder.runToTarget(.65, 10000,
+                targetReached = tankDriveToEncoder.runToTarget(.65, 5500,
                         DriveDirection.DRIVE_FORWARD,DcMotor.RunMode.RUN_TO_POSITION);
                 if (targetReached) {
                     step++;
                 }
                 break;
+
+
+            case 6:
+                //3rd turn right
+                getTelemetryUtil().addData("step" + step + ": handleDriveOperation", "PIVOT_RIGHT");
+                targetReached = tankDriveToEncoder.runToTarget(0.4, 5050,
+                        DriveDirection.PIVOT_FORWARD_RIGHT,DcMotor.RunMode.RUN_TO_POSITION);
+                if (targetReached) {
+                    step++;
+                }
+                break;
+
+
+            case 7:
+                //full power  forward
+                getTelemetryUtil().addData("step" + step + ": handleDriveOperation", "DRIVE_FORWARD");
+                targetReached = tankDriveToEncoder.runToTarget(.65, 7250,
+                        DriveDirection.DRIVE_FORWARD,DcMotor.RunMode.RUN_TO_POSITION);
+                if (targetReached) {
+                    step++;
+                }
+                break;
+
+
+            case 8:
+                //PIVOT BACK
+                getTelemetryUtil().addData("step" + step + ": handleDriveOperation", "PIVOT_BACK_RIGHT");
+                targetReached = tankDriveToEncoder.runToTarget(0.4, 5050,
+                        DriveDirection.PIVOT_BACKWARD_RIGHT,DcMotor.RunMode.RUN_TO_POSITION);
+                if (targetReached) {
+                    step++;
+                }
+                break;
+
+            case 9:
+                //PARK
+                getTelemetryUtil().addData("step" + step + ": handleDriveOperation", "Pull back");
+                targetReached = tankDriveToEncoder.runToTarget(.65, 1500,
+                        DriveDirection.DRIVE_BACKWARD,DcMotor.RunMode.RUN_TO_POSITION);
+                if (targetReached) {
+                    step++;
+                }
+                break;
+
 
             default:
                 setOperationsCompleted();
