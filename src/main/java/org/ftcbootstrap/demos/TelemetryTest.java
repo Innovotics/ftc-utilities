@@ -59,7 +59,7 @@ public class TelemetryTest extends ActiveOpMode {
 
       getTelemetryUtil().sendTelemetry();
 
-      waitOneFullHardwareCycle();
+      idle();
     }
   }
 
