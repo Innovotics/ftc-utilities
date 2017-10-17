@@ -2,10 +2,11 @@ package org.ftcbootstrap;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
-import com.qualcomm.robotcore.eventloop.opmode.OpModeMeta;
+//import com.qualcomm.robotcore.eventloop.opmode.OpModeMeta;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.robotcore.internal.opmode.OpModeMeta;
 import org.ftcbootstrap.demos.TelemetryTest;
 
 import java.lang.annotation.Annotation;

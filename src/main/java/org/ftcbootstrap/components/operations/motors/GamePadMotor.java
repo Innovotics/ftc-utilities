@@ -100,7 +100,7 @@ public class GamePadMotor extends OpModeComponent {
                 break;
         }
 
-        addTelemetry("setting power: " + control.toString(), power);
+        boolean test = (motor == null);
 
         motor.setPower(power);
 

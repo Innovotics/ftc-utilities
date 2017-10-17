@@ -1,6 +1,6 @@
 package org.ftcbootstrap;
 
-import com.qualcomm.ftccommon.DbgLog;
+//import com.qualcomm.ftccommon.DbgLog;
 import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -61,7 +61,7 @@ public abstract class RobotConfiguration {
             try {
                 ErrorUtil.handleCatchAllException(e, getTelemetryUtil());
             } catch (InterruptedException e1) {
-                DbgLog.msg(e.getLocalizedMessage());
+                //DbgLog.msg(e.getLocalizedMessage());
             }
 
         }

@@ -108,7 +108,7 @@ public abstract class ActiveOpMode extends LinearOpMode {
             if (opModeIsActive()) {
                 idle();
             }
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
         }
     }
 
