@@ -183,8 +183,9 @@ public class ColorSensorComponent extends OpModeComponent {
                 colorSensor.enableLed(value);
                 break;
             case ADAFRUIT:
-                LED led = getOpMode().hardwareMap.led.get("led");
-                led.enable(value);
+//                LED led = getOpMode().hardwareMap.led.get("led");
+//                led.enable(value);
+                colorSensor.enableLed(value);
                 break;
             case MODERN_ROBOTICS_I2C:
                 colorSensor.enableLed(value);
