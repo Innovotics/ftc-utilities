@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.pushbot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
@@ -31,6 +32,7 @@ import org.ftcbootstrap.demos.pushbot.PushBot;
  */
 
 @TeleOp
+@Disabled
 public class PushBotManual2 extends ActiveOpMode {
 
   private GamePadTankDrive tankDrive;

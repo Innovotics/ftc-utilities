@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.demobot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.ftcbootstrap.demos.demobot.DemoBot;
@@ -21,6 +22,7 @@ import org.ftcbootstrap.components.operations.servos.GamePadServo;
  */
 
 @TeleOp
+@Disabled
 public class DemoBotTeleOpMode extends ActiveOpMode {
 
     private GamePadTankDrive tankDrive;

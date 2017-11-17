@@ -1,6 +1,7 @@
 package org.ftcbootstrap.demos.beginner.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.ftcbootstrap.ActiveOpMode;
 import org.ftcbootstrap.demos.beginner.MyFirstBot;
@@ -21,6 +22,7 @@ import org.ftcbootstrap.demos.beginner.MyFirstBot;
  */
 
 @Autonomous
+@Disabled
 public class OpMode1RunForTime extends ActiveOpMode {
 
     private MyFirstBot robot;

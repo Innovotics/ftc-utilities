@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.onemc.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
@@ -29,6 +30,7 @@ import org.ftcbootstrap.demos.onemc.OneMCBot;
  */
 
 @TeleOp
+@Disabled
 public class OneMCTeleOp extends ActiveOpMode {
 
     private GamePadTankDrive tankDrive;

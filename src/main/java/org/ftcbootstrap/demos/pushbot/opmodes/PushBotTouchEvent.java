@@ -1,6 +1,7 @@
 package org.ftcbootstrap.demos.pushbot.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.ftcbootstrap.ActiveOpMode;
 import org.ftcbootstrap.components.operations.motors.TankDrive;
@@ -27,6 +28,7 @@ import org.ftcbootstrap.components.utils.DriveDirection;
  */
 
 @Autonomous
+@Disabled
 public class PushBotTouchEvent extends ActiveOpMode {
 
     private PushBot robot;

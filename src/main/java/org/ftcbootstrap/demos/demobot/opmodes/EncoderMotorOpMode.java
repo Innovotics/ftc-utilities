@@ -1,6 +1,7 @@
 package org.ftcbootstrap.demos.demobot.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.demos.demobot.DemoBot;
@@ -22,6 +23,7 @@ import org.ftcbootstrap.components.utils.MotorDirection;
 
 
 @Autonomous
+@Disabled
 public class EncoderMotorOpMode extends ActiveOpMode {
 
     private DemoBot robot;

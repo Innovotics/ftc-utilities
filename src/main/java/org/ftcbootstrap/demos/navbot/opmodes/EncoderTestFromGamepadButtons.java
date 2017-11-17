@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.navbot.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
@@ -29,6 +30,7 @@ import org.ftcbootstrap.demos.navbot.NavBot;
 
 
 @TeleOp
+@Disabled
 public class EncoderTestFromGamepadButtons extends ActiveOpMode {
 
     private NavBot robot;
