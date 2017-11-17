@@ -1,5 +1,6 @@
 package org.ftcbootstrap.demos.beginner.opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.ftcbootstrap.ActiveOpMode;
@@ -15,6 +16,7 @@ import org.ftcbootstrap.demos.beginner.MyFirstBot;
  */
 
 @TeleOp
+@Disabled
 public class OpMode6DriveWithGamepad extends ActiveOpMode {
 
     private MyFirstBot robot;

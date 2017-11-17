@@ -1,6 +1,7 @@
 package org.ftcbootstrap.demos.navbot.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.ftcbootstrap.ActiveOpMode;
@@ -28,6 +29,7 @@ import org.ftcbootstrap.demos.navbot.NavBot;
  */
 
 @Autonomous
+@Disabled
 public class NavigateWithEncoders extends ActiveOpMode {
 
     private NavBot robot;

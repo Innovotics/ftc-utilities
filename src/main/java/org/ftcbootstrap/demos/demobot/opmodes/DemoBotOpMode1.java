@@ -12,6 +12,7 @@ import org.ftcbootstrap.demos.demobot.DemoBot;
 import org.ftcbootstrap.ActiveOpMode;
 
 import com.qualcomm.ftcrobotcontroller.R;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 /**
@@ -31,6 +32,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  */
 
 @TeleOp
+@Disabled
 public class DemoBotOpMode1 extends ActiveOpMode {
 
     private DemoBot robot;
