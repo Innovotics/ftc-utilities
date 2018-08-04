@@ -52,7 +52,21 @@ public class ServoComponent extends OpModeComponent {
 
 
     }
+    public ServoComponent(ActiveOpMode opMode, Servo servo, boolean reverseOrientation) {
 
+        super(opMode);
+
+        this.servo = servo;
+
+        this.reverse = reverseOrientation;
+
+        // set the starting position of the servo
+//        updateServoTargetPosition(initialPosition);
+
+ //       addTelemetry("adding servo component pos: " , initialPosition);
+
+
+    }
     /**
      * Assign a new value to the servo's position
      *
